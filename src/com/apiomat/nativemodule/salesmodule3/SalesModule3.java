@@ -123,6 +123,6 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
     @Override
     public int checkHealth( final String appName, final String system )
     {
-        return -1;
+        return 0;
     }
 }
