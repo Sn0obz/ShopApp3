@@ -182,7 +182,7 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     				this.model.log(Level.DEBUG,"Oh mein Gott wir haben eine Token-Anmeldung");
     				return true;	
     			}else { return false;}
-    		}else if (SalesModule3.AOM.checkUserRequestCredentialsAndReturn(r) != null) {
+    		}else if (r.isAuthenticateUser()) {
     			this.model.log(Level.DEBUG,"Oh mein Gott wir haben eine Reale-Anmeldung");
 				return true;
 			}
