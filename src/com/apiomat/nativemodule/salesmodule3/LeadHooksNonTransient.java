@@ -102,7 +102,8 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     {
     	if( objFromDB.getScore() != obj.getScore()){
     		this.model.log(Level.ERROR,"score modification not allowed");
-    		obj.setScore( objFromDB.getScore());
+    		obj.setScore(objFromDB.getScore());
+    		this.model.log(Level.INFO,obj.toString());
     	}
         return false;
     }
