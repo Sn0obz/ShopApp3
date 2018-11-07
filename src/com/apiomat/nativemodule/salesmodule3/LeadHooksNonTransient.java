@@ -58,7 +58,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public void afterPost( com.apiomat.nativemodule.salesmodule3.Lead obj, com.apiomat.nativemodule.Request r )
     {
-    	Salesman mySalesman = this.model.findByNames(Salesman.class,"username = " + r.getUserEmail(), r).get(0);
+    	Salesman mySalesman = this.model.findByNames(Salesman.class,"userName = " + r.getUserEmail(), r).get(0);
     	mySalesman.postListOfLeads(obj);
     	mySalesman.save();
     }
