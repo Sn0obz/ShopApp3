@@ -128,6 +128,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
 				obj.postAreaPicture(url.openStream(), obj.getFirstName(), "png");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				this.model.log(Level.ERROR,e.getMessage());
 				
 			}
     		
