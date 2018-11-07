@@ -179,10 +179,11 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     	if( userNameOrEmail.contains("@training.de")){
     		if(r.getUserToken() != null){	
     			if(SalesModule3.AOM.findByAccessToken(r.getApplicationName(), r.getUserToken())!=null){
-    				this.model.log(Level.DEBUG,"Oh mein Gott wir haben eine Anmeldung");
+    				this.model.log(Level.DEBUG,"Oh mein Gott wir haben eine Token-Anmeldung");
     				return true;	
     			}else { return false;}
     		}else if (SalesModule3.AOM.checkUserRequestCredentialsAndReturn(r) != null) {
+    			this.model.log(Level.DEBUG,"Oh mein Gott wir haben eine Reale-Anmeldung");
 				return true;
 			}
     		else {return false;}
