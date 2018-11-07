@@ -23,6 +23,8 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.apiomat.nativemodule.salesmodule3;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -120,7 +122,14 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     		obj.setScore(objFromDB.getScore());
     	}
     	if ( obj.getRegPlaceLatitude() > 0 && obj.getRegPlaceLongitude() > 0){
-    		obj.loadAreaPicture("AIzaSyC06K2DS1D1Yw5zHZWOUJuZSCDt-kL-gXY", r.getSystem(), 100, 100,"000000",0.00,"jpeg");
+    		try {
+    			URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+obj.getRegPlaceLatitude()+","+obj.getRegPlaceLongitude()+"&zoom=14&size=400x400&key="+SalesModule3.GAPI);
+				obj.postAreaPicture(url.openStream(), obj.getFirstName(), "png");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				
+			}
+    		
     	}
     		
     		return false;

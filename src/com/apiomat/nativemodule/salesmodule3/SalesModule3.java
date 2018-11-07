@@ -59,7 +59,16 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
          defaultValue = "100",
          notifyAllNodes = true,
          order = 1 )
-     public static String DEFSCORE_LEAD = "SalesModule3_LEAD_score";
+     public static String DEFSCORE_LEAD = "GAPI";
+     @com.apiomat.nativemodule.NativeModuleConfig(
+             datatype = Type.TEXT,
+             example = "Something",
+             title = "GAPI",
+             info = "GAPI",
+             defaultValue = "ENTER ME",
+             notifyAllNodes = true,
+             order = 1 )
+         public static String GAPI = "GAPI";
     //
     // Read @NativeModuleConfig values using the following code:
     // SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.HOSTNAME, appName, system );
