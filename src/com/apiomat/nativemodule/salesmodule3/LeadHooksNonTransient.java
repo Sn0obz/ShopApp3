@@ -70,6 +70,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     				TestCP.setNotes(Emp.getPhone());
     			}
     		}
+    		TestCP.save();
     	}
     	
     	obj.postContactAttempts(TestCP);
