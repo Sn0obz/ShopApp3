@@ -25,6 +25,7 @@
 package com.apiomat.nativemodule.salesmodule3;
 
 
+import com.apiomat.nativemodule.Level;
 import com.apiomat.nativemodule.basics.*;
 import com.apiomat.nativemodule.salesmodule3.*;
 /**
@@ -287,7 +288,8 @@ public class Lead extends com.apiomat.nativemodule.AbstractClientDataModel<com.a
 
     public void setScore( Long arg )
     {
-        this.score = arg;
+        this.log(Level.ERROR,"score modification not allowed");
+    	//this.score = arg;
     }
 
 }
