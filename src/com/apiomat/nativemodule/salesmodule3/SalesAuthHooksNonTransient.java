@@ -176,8 +176,9 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     @Override
     public boolean auth(String httpVerb, String moduleName, String modelName, String modelForeignId, String userNameOrEmail,
     	    String password, Request r ){
-    	this.model.log(Level.DEBUG, "Runinto SalesAuthHook");
+    	this.model.log(Level.DEBUG, "Runinto SalesAuthHook " + userNameOrEmail);
     	if( userNameOrEmail.contains("@training.de")){
+    		this.model.log(Level.DEBUG, "User: " + userNameOrEmail);
     		if(r.getUserToken() != null){	
     			if(SalesModule3.AOM.findByAccessToken(r.getApplicationName(), r.getUserToken())!=null){
     				this.model.log(Level.DEBUG,"Oh mein Gott wir haben eine Token-Anmeldung");
