@@ -63,8 +63,8 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	List<Employees> myEmp = this.model.findByNames(Employees.class,"" , r);
     	if(myEmp != null && myEmp.size() > 0) {
     		Random myN = new Random();
-    		this.model.log(Level.FATAL,"My Random is " + myN.nextInt()%myEmp.size() + " My DB Size is " + myEmp.size());
-			TestCP.setNotes(myEmp.get(myN.nextInt()%myEmp.size()).getName());
+    		this.model.log(Level.FATAL,"My Random is " + myN.nextInt() + " My DB Size is " + myEmp.size());
+			TestCP.setNotes(myEmp.get(Math.abs(myN.nextInt()%myEmp.size())).getName());
     		TestCP.save();
     	}
     	
