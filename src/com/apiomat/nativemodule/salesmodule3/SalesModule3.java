@@ -24,6 +24,9 @@
  */
 package com.apiomat.nativemodule.salesmodule3;
 
+import java.net.InetSocketAddress;
+import java.net.Socket;
+
 import com.apiomat.nativemodule.Cron;
 import com.apiomat.nativemodule.IModel;
 import com.apiomat.nativemodule.Level;
@@ -123,6 +126,14 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
     @Override
     public int checkHealth( final String appName, final String system )
     {
-        return 0;
+    	int status = 500;
+    	try(Socket soc = new Socket()){
+    		soc.connect( new InetSocketAddress("193.31.27.46", 3306));
+    		status = 0; 
+    	}
+    	catch (Exception e){
+    		AOM.log(Level.FATAL, "SQL isch kaputt Bruda");
+    	}
+        return status;
     }
 }
