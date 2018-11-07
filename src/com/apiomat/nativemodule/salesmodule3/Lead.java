@@ -25,7 +25,9 @@
 package com.apiomat.nativemodule.salesmodule3;
 
 
+import com.apiomat.nativemodule.Cron;
 import com.apiomat.nativemodule.Level;
+import com.apiomat.nativemodule.Request;
 import com.apiomat.nativemodule.basics.*;
 import com.apiomat.nativemodule.salesmodule3.*;
 /**
@@ -43,8 +45,10 @@ import com.apiomat.nativemodule.salesmodule3.*;
     requiredUserRoleWrite=com.apiomat.nativemodule.UserRole.Owner, restrictResourceAccess=false,    allowedRolesCreate={}, allowedRolesRead={},
     allowedRolesWrite={}, allowedRolesGrant={}, 
     roleClassesMap={})
+
 public class Lead extends com.apiomat.nativemodule.AbstractClientDataModel<com.apiomat.nativemodule.salesmodule3.Lead> implements com.apiomat.nativemodule.IModel<com.apiomat.nativemodule.salesmodule3.Lead>
 {
+	
     /**
      * Contains the name of the module that this model belongs to
      */

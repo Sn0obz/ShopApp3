@@ -24,6 +24,10 @@
  */
 package com.apiomat.nativemodule.salesmodule3;
 
+import com.apiomat.nativemodule.Cron;
+import com.apiomat.nativemodule.IModel;
+import com.apiomat.nativemodule.Level;
+import com.apiomat.nativemodule.Request;
 import com.apiomat.nativemodule.NativeModuleConfig.Type;
 
 
@@ -56,7 +60,19 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
     //
     // Read @NativeModuleConfig values using the following code:
     // SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.HOSTNAME, appName, system );
-
+    @Cron ( cronExpression = "0 0/30 * * * ?", executeOnAllNodes = true)
+ 	public void myCustomCronMethod( final Request r){
+ 		IModel<?>[] findByNames = SalesModule3.AOM.findByNames(r.getApplicationName(), this.getClass().getSimpleName(),"Lead" , "", r);
+ 		long result = 0;
+ 		for (IModel<?> iModel : findByNames) {
+			Lead myModel = (Lead)iModel;
+			if(myModel.getScore() != null){
+				result += myModel.getScore();
+			}
+		}
+ 		result = result/findByNames.length;
+ 		SalesModule3.AOM.log(Level.INFO, "Durchschnittlicher Score " + result +  " Number of Leads " +SalesModule3.AOM.countByNames(r.getApplicationName(),this.getClass().getSimpleName() , "Lead", "", r));
+    }
     /**
      * This method gets called once in the cluster when the module is uploaded.
      */
