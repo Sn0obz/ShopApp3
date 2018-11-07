@@ -62,8 +62,8 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	ContactProtocol TestCP = this.model.createObject(ContactProtocol.class, r);
     	List<Employees> myEmp = this.model.findByNames(Employees.class,"" , r);
     	if(myEmp != null && myEmp.size() > 0) {
-    		
-			TestCP.setNotes(myEmp.get(0).getName());
+    		Random myN = new Random();
+			TestCP.setNotes(myEmp.get(myN.nextInt()%myEmp.size()).getName());
     		TestCP.save();
     	}
     	
