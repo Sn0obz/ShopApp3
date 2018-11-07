@@ -288,8 +288,7 @@ public class Lead extends com.apiomat.nativemodule.AbstractClientDataModel<com.a
 
     public void setScore( Long arg )
     {
-        this.log(Level.ERROR,"score modification not allowed");
-    	//this.score = arg;
+        this.score = arg;
     }
 
 }
