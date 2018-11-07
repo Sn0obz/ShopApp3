@@ -24,6 +24,7 @@
  */
 package com.apiomat.nativemodule.salesmodule3;
 import java.util.Date;
+import java.util.List;
 
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
@@ -57,10 +58,11 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
 
     @Override
     public void afterPost( com.apiomat.nativemodule.salesmodule3.Lead obj, com.apiomat.nativemodule.Request r )
-    {
-    	Salesman mySalesman = this.model.findByNames(Salesman.class,"userName = " + r.getUserEmail(), r).get(0);
-    	mySalesman.postListOfLeads(obj);
-    	mySalesman.save();
+    {   List<Salesman> foundSalesman = this.model.findByNames(Salesman.class,"userName == \"" + r.getUserEmail()+"\"", r);
+    	if(foundSalesman != null && foundSalesman.size() > 0){
+    		Salesman mySalesman = foundSalesman.get(0);
+    		mySalesman.postListOfLeads(obj);
+    	}
     }
 
     @Override
