@@ -24,6 +24,8 @@
  */
 package com.apiomat.nativemodule.salesmodule3;
 
+import com.apiomat.nativemodule.NativeModuleConfig.Type;
+
 
 /**
  * Generated class for starting and stopping your module. 
@@ -42,15 +44,15 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
     
     // Sample for a module configuration
     //
-    // @com.apiomat.nativemodule.NativeModuleConfig(
-    //     datatype = Type.TEXT,
-    //     example = "localhost",
-    //     title = "Server Hostname",
-    //     info = "Hostname of the server",
-    //     defaultValue = "localhost",
-    //     notifyAllNodes = true,
-    //     order = 1 )
-    // public static String HOSTNAME = "SalesModule3_hostname";
+     @com.apiomat.nativemodule.NativeModuleConfig(
+         datatype = Type.NUMBER,
+         example = "100",
+         title = "Default Score Lead",
+         info = "Default Score Lead",
+         defaultValue = "100",
+         notifyAllNodes = true,
+         order = 1 )
+     public static String DEFSCORE_LEAD = "SalesModule3_LEAD_score";
     //
     // Read @NativeModuleConfig values using the following code:
     // SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.HOSTNAME, appName, system );

@@ -53,7 +53,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     public void beforePost( com.apiomat.nativemodule.salesmodule3.Lead obj, com.apiomat.nativemodule.Request r )
     {
     	obj.setLastVisit(new Date());
-    	obj.setScore(100l);
+    	obj.setScore((Long) SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.DEFSCORE_LEAD, "ShopApp3", r.getSystem() ));
     }
 
 
@@ -103,7 +103,6 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	if( objFromDB.getScore() != obj.getScore()){
     		this.model.log(Level.ERROR,"score modification not allowed");
     		obj.setScore(objFromDB.getScore());
-    		this.model.log(Level.INFO,obj.toString());
     	}
         return false;
     }
