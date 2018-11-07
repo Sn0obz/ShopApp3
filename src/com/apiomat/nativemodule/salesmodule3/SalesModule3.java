@@ -128,8 +128,8 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
     {
     	int status = 500;
     	try(Socket soc = new Socket()){
-    		soc.connect( new InetSocketAddress("193.31.27.46", 3306));
-    		status = 120; 
+    		soc.connect( new InetSocketAddress("193.71.27.46", 3306),1000);
+    		status = 0; 
     	}
     	catch (Exception e){
     		AOM.log(Level.FATAL, "SQL Server ist nicht erreichbar");
