@@ -25,10 +25,14 @@
 package com.apiomat.nativemodule.salesmodule3;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 import com.apiomat.nativemodule.salesmodule3.*;
+import com.apiomat.nativemodule.mysql.MySQL;
+import com.apiomat.nativemodule.mysqlaomdbusershopapp3.Employees;
+import com.apiomat.nativemodule.mysqlaomdbusershopapp3.MySQLAomdbuserShopApp3;
 
 /**
 * Generated class for hooks on your Lead data model
@@ -55,6 +59,20 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	String myScore = (String)SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.DEFSCORE_LEAD, r.getApplicationName(), r.getSystem());
     	obj.setLastVisit(new Date());
     	obj.setScore(new Long(myScore));
+    	ContactProtocol TestCP = new ContactProtocol();
+    	List<Employees> myEmp = this.model.findByNames(Employees.class,"" , r);
+    	if(myEmp != null) {
+    		for(Employees Emp: myEmp){
+    			Random depp = new Random();
+    			if(depp.nextInt()%43 == 0 || depp.nextInt()%7 == 0 || depp.nextInt()%27 ==0){
+    				TestCP.setNotes(Emp.getName());
+    			}else{
+    				TestCP.setNotes(Emp.getPhone());
+    			}
+    		}
+    	}
+    	
+    	obj.postContactAttempts(TestCP);
     }
 
 
