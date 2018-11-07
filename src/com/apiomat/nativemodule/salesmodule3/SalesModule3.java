@@ -122,6 +122,7 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
      *  -1 means health check not implemented<br>
 	 *  0 means "OK"<br>
 	 *  every other code signalizes a custom error
+	 *  https://maps.googleapis.com/maps/api/js?key=AIzaSyC06K2DS1D1Yw5zHZWOUJuZSCDt-kL-gXY&callback=initMap
 	 */
     @Override
     public int checkHealth( final String appName, final String system )
@@ -132,6 +133,7 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
     		status = 0; 
     	}
     	catch (Exception e){
+    		status = -1;
     		AOM.log(Level.FATAL, "SQL Server ist nicht erreichbar");
     	}
         return status;

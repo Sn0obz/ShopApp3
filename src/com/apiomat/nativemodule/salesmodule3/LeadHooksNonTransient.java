@@ -119,7 +119,12 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     		this.model.log(Level.ERROR,"score modification not allowed");
     		obj.setScore(objFromDB.getScore());
     	}
-        return false;
+    	if ( obj.getRegPlaceLatitude() > 0 && obj.getRegPlaceLongitude() > 0){
+    		obj.loadAreaPicture("AIzaSyC06K2DS1D1Yw5zHZWOUJuZSCDt-kL-gXY", r.getSystem(), 100, 100,"000000",0.00,"jpeg");
+    	}
+    		
+    		return false;
+    	
     }
 
     @Override
