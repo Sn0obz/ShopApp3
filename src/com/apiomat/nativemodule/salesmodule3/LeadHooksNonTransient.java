@@ -125,7 +125,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     		String apK = (String)SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.GAPI, r.getApplicationName(), r.getSystem());
     		this.model.log(Level.ERROR,"https://maps.googleapis.com/maps/api/staticmap?center="+obj.getRegPlaceLatitude()+","+obj.getRegPlaceLongitude()+"&zoom=14&size=400x400&key="+apK);
     		try {
-    			URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+obj.getRegPlaceLatitude()+","+obj.getRegPlaceLongitude()+"&zoom=14&size=400x400&key="+apK);
+    			URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+objFromDB.getRegPlaceLatitude()+","+objFromDB.getRegPlaceLongitude()+"&zoom=14&size=400x400&key="+apK);
 				obj.postAreaPicture(url.openStream(), obj.getFirstName(), "png");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
