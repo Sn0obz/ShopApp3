@@ -68,7 +68,7 @@ public class SalesModule3 implements com.apiomat.nativemodule.IModule
              defaultValue = "ENTER ME",
              notifyAllNodes = true,
              order = 1 )
-        public static String GAPI = "GAPI";
+     public static String GAPI = "GAPI";
     //
     // Read @NativeModuleConfig values using the following code:
     // SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.HOSTNAME, appName, system );

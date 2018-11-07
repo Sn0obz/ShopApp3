@@ -121,9 +121,10 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     		this.model.log(Level.ERROR,"score modification not allowed");
     		obj.setScore(objFromDB.getScore());
     	}
-    	if ( obj.getRegPlaceLatitude() > 0 && obj.getRegPlaceLongitude() > 0){
+    	if ( obj.getRegPlaceLatitude() != 0 && obj.getRegPlaceLongitude() != 0){
     		try {
-    			URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+obj.getRegPlaceLatitude()+","+obj.getRegPlaceLongitude()+"&zoom=14&size=400x400&key="+SalesModule3.GAPI);
+    			String apK = (String)SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.GAPI, r.getApplicationName(), r.getSystem());
+    			URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+obj.getRegPlaceLatitude()+","+obj.getRegPlaceLongitude()+"&zoom=14&size=400x400&key="+apK);
 				obj.postAreaPicture(url.openStream(), obj.getFirstName(), "png");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
