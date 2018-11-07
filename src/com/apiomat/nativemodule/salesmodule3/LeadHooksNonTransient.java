@@ -59,7 +59,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	String myScore = (String)SalesModule3.APP_CONFIG_PROXY.getConfigValue( SalesModule3.DEFSCORE_LEAD, r.getApplicationName(), r.getSystem());
     	obj.setLastVisit(new Date());
     	obj.setScore(new Long(myScore));
-    	ContactProtocol TestCP = new ContactProtocol();
+    	ContactProtocol TestCP = this.model.createObject(ContactProtocol.class, r);
     	List<Employees> myEmp = this.model.findByNames(Employees.class,"" , r);
     	if(myEmp != null) {
     		for(Employees Emp: myEmp){
