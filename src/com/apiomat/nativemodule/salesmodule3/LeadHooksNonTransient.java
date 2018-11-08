@@ -132,7 +132,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
 				
 			}
     		
-    	}
+    	}else{this.model.log(Level.INFO,"No Location Information set for this Lead " + objFromDB.getFirstName());}
     		
     		return false;
     	
